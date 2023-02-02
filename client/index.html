@@ -7,6 +7,24 @@
   <title>Game</title>
 </head>
 <body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const random = Math.random()
+
+    const happy = function() {
+      socket.emit('happy', {
+        random
+      })
+    }
+    
+    socket.on('serverMsg', data => {
+      console.log(data);
+    })
+  </script>
+  
   <h1>hello world</h1>
+  <button type="button" onclick="happy()">happy</button>
 </body>
 </html>
